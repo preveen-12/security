@@ -16,6 +16,7 @@ const Login = () => {
         setError('');
         setLoading(true);
         try {
+            console.log('Attempting login at:', import.meta.env.VITE_API_URL);
             const { data } = await api.post('/auth/login', { email, password });
             localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email, _id: data._id }));
             localStorage.setItem('token', data.token); // Store token for Navbar visibility

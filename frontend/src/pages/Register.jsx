@@ -17,6 +17,7 @@ const Register = () => {
         setError('');
         setLoading(true);
         try {
+            console.log('Attempting login at:', import.meta.env.VITE_API_URL);
             const { data } = await api.post('/auth/register', { name, email, password });
             // Email must be passed to verify OTP page
             navigate('/verify-otp', { state: { email: data.email || email } });
