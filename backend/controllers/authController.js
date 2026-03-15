@@ -167,8 +167,8 @@ const forgotPassword = async (req, res) => {
         await user.save();
 
         // Create reset URL
-        // Using localhost for development as per user request
-        const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+        // Using frontend URL for production with fallback to localhost
+        const resetUrl = `${process.env.FRONTEND_URL || 'http://localhost:5173'}/reset-password/${resetToken}`;
 
         try {
             const emailSent = await sendResetPasswordEmail(user.email, resetUrl);
