@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-deepPurple: #4B0082;
+    --color-violet: #8A2BE2;
+    --color-lavender: #F3E5F5;
+    --color-pageBase: #0B0E14;
+  }
+
+  body {
+    background-color: var(--color-pageBase);
+    color: #FFFFFF;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(138, 43, 226, 0.45) 0, transparent 55%),
+      radial-gradient(circle at 100% 0%, rgba(75, 0, 130, 0.45) 0, transparent 60%),
+      radial-gradient(circle at 100% 100%, rgba(230, 230, 250, 0.28) 0, transparent 55%),
+      radial-gradient(circle at 0% 100%, rgba(138, 43, 226, 0.18) 0, transparent 55%),
+      var(--color-pageBase);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  label,
+  div {
+    color: #FFFFFF;
+  }
+
+  /* Global strategy for SVGs/Icons */
+  svg {
+    transition: color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer components {
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border-radius: 2rem;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .glass-card.bg-light-mixed {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #FFFFFF;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-input:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-color: var(--color-violet);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    border-color: transparent;
+  }
+
+  .glass-button {
+    width: 100%;
+    background-image: linear-gradient(to right, var(--color-violet), var(--color-deepPurple));
+    color: #FFFFFF !important;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition-property: transform, box-shadow, background-image;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-button:hover {
+    background-image: linear-gradient(to right, var(--color-deepPurple), var(--color-violet));
+    box-shadow: 0 15px 30px -5px rgba(138, 43, 226, 0.4);
+    transform: translateY(-1px);
+  }
+}
